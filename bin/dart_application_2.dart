@@ -1,38 +1,21 @@
 void main()
 {
-// for(int i=1; i <= 10; i+=2) // i = 0
-// {
-//   print(i);
-// }// i =1
-// int i =10;
-// while(false)
-// {
-//   print(i);
-//   i--;
-//   if(i < 1) {
-//     break;
-//   }
-// }
-// int i =0;
-// do
-// {
-// print(i);
-// i++;
-// }while(false);
+  List<int> l = [1,2,3,4,5];
+  int start = 0;
+  int end = l.length - 1;
 
-
-for(int i=1; i <= 12; i++) 
-{
-  // for(int j=1; j <= 12; j++) 
-  // {
-  //   print('$i * $j = ${i * j}');
-  // } 
-  int j =0;
-  while(j <= 12) 
+  while(start < end)
   {
-   print(" $i * $j = ${i*j}");
-   j++;
+    // swap 
+    int temp = l[start];
+    l[start] = l[end];
+    l[end] = temp;
+
+    start++;
+    end--;
   }
+  
+  print(l);
+  
 }
 
-}
