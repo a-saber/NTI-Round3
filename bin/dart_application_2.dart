@@ -1,42 +1,35 @@
+  int x = 5;
+
 void main()
 {
-  Map<String, List<int>> studentsData =
-  {
-    'ahmed': [20, 30, 40],
-    'ali': [10, 20, 30],
-    'sara': [50, 60, 70],
-    'mona': [80, 90, 100],
-  };
-
-  Map<String, double> averageScores = {};
-  Map<String, Map<String, dynamic>> studentOutputs = {};
-  studentsData.forEach(
-    (String key, List<int> value)
-    {
-      int sum = 0;
-      for(int degree in value)
-      {
-        sum += degree;
-      }
-      double average = sum /value.length;
-      averageScores.addAll({key: average});
-      studentOutputs.addAll({key: 
-      {
-        "average": average,
-        'results': average > 50 ? 'passed' : 'failed',
-      }});
-    }
-  );
-  print(averageScores);
-  print(studentOutputs);
-
-  studentOutputs.forEach(test);
-
-  
+  // bool result = isEven(4);
+  // print(result); 
+  // int result = sum(y: 5);
+  // print(result);
+  List<int> numbers = [1, 2, 3];
+  addToList(List.from(numbers));
+  print(numbers);
+  // int result = addOne(x);
+  // print(result);
+  // print(x);
 }
 
-test(String key, Map<String, dynamic> value)
-{
-  print('name is: \'$key\', average is ${value['average']}, result is ${value['results']}');
 
+void addToList(List<int> numbers)
+{
+  numbers.add(10);
+}
+
+int addOne(int x)
+{
+  return ++x;
+}
+int sum({int x = 0, int y = 0})
+{
+  return x + y;
+}
+
+bool isEven(int x)
+{
+  return x.isEven;
 }
