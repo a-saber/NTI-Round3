@@ -1,35 +1,33 @@
 void main()async
 {
-  // Future.delayed(Duration(milliseconds: 2000)).then((value){
-  //   print('hello 1');
-  // });
-  // print('hello 2');
+  // high order function
+  // calculate(10, 20, sum);
 
-  makeDelay().then((value)
-  {
-    print(value);
-  }).catchError((error)
-  {
-    print('error: ${error.toString()}');
-  }).whenComplete(()
-  {
-    print('completed');
+  var sumFun = calculate('+');
+  int x = sumFun(5, 6);
+  int z = sumFun(50, 6);
 
-  });
-
-  print('hello 3');
+  var muliFun = calculate('*');
+  int y = muliFun(5, 6);
+  print(x);
+  print(z);
+  print(y);
 
 }
-
-Future<int> makeDelay() async
+typedef Operation = int Function(int, int);
+Operation calculate(String operation)
 {
-  await Future.delayed(
-    Duration(seconds: 2),
-    (){
-      print('hello from fun');
-    }
-  );
-  print('hello out delay inside fun');
-  // throw Exception('error from makeDelay');
-  return 5;
+  switch(operation)
+  {
+    case '+':
+      return (int x, int y)=> x+y;
+    case '-':
+      return (int x, int y)=> x-y;
+    case '*':
+      return (int x, int y)=> x*y;
+    case '/':
+      return (int x, int y)=> (x/y).round();
+    case _:
+      return (int x, int y)=> x+y;
+  }
 }
