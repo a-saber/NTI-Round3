@@ -3,31 +3,34 @@ void main()async
   // high order function
   // calculate(10, 20, sum);
 
-  var sumFun = calculate('+');
-  int x = sumFun(5, 6);
-  int z = sumFun(50, 6);
+  Discount fixedDiscount = setupDiscount('fixed');
+  Discount percentageDiscount = setupDiscount('percentage');
+  print(setupDiscount('percentage')(100));
+  // print(fixedDiscount(100));
+  // print(fixedDiscount(200));
+  // print(percentageDiscount(100));
+  // print(percentageDiscount(200));
 
-  var muliFun = calculate('*');
-  int y = muliFun(5, 6);
-  print(x);
-  print(z);
-  print(y);
 
+   sum(5, 10).isEven;
 }
-typedef Operation = int Function(int, int);
-Operation calculate(String operation)
+int sum(int a, int b)
 {
-  switch(operation)
+  return a + b;
+}
+typedef Discount = double Function(double amount);
+Discount setupDiscount(String type)
+{
+  if(type == 'fixed') // -20
   {
-    case '+':
-      return (int x, int y)=> x+y;
-    case '-':
-      return (int x, int y)=> x-y;
-    case '*':
-      return (int x, int y)=> x*y;
-    case '/':
-      return (int x, int y)=> (x/y).round();
-    case _:
-      return (int x, int y)=> x+y;
+    return (amount)=> amount -20;
+  }
+  else if(type == 'percentage') // -5%
+  {
+    return (amount) => amount *0.95;
+  }
+  else // keep the same
+  {
+    return (amount)=> amount;
   }
 }
